@@ -13,9 +13,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/znnw/aigc-data-analysis-platform/actions/workflows/frontend-ci.yml">
-    <img alt="Frontend CI" src="https://github.com/znnw/aigc-data-analysis-platform/actions/workflows/frontend-ci.yml/badge.svg" />
-  </a>
   <img alt="React" src="https://img.shields.io/badge/React-18.2-61DAFB?logo=react&logoColor=111827" />
   <img alt="Umi Max" src="https://img.shields.io/badge/Umi%20Max-4.0-1677FF" />
   <img alt="Ant Design" src="https://img.shields.io/badge/Ant%20Design-5.2-1677FF" />
@@ -66,7 +63,6 @@
 | HTTP           | Umi Request / Axios       | Umi 管理 | 携带 Cookie 的 REST 请求               |
 | 构建           | Webpack + MFSU            | Umi 管理 | 开发与生产构建                         |
 | 包管理         | pnpm                      | 7.x      | 可复现依赖安装                         |
-| 持续集成       | GitHub Actions            | —        | 类型检查、Lint 与生产构建              |
 
 ## 系统架构
 
@@ -223,7 +219,7 @@ admin / admin123456
 
 ## 质量与可靠性
 
-- CI 必须通过 `pnpm tsc` 和 `pnpm build`。
+- 发布前执行 `pnpm tsc`、`pnpm lint:js` 和 `pnpm build`。
 - 页面通过服务层消费生成的 API 类型。
 - 后端长整型标识符以字符串形式保留。
 - 非法 ECharts JSON 由单卡片错误边界隔离。

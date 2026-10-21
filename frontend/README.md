@@ -13,9 +13,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/znnw/aigc-data-analysis-platform/actions/workflows/frontend-ci.yml">
-    <img alt="Frontend CI" src="https://github.com/znnw/aigc-data-analysis-platform/actions/workflows/frontend-ci.yml/badge.svg" />
-  </a>
   <img alt="React" src="https://img.shields.io/badge/React-18.2-61DAFB?logo=react&logoColor=111827" />
   <img alt="Umi Max" src="https://img.shields.io/badge/Umi%20Max-4.0-1677FF" />
   <img alt="Ant Design" src="https://img.shields.io/badge/Ant%20Design-5.2-1677FF" />
@@ -66,7 +63,6 @@ The frontend is located in `frontend/` and communicates with the Spring Boot bac
 | HTTP | Umi Request / Axios | Umi managed | Cookie-aware REST requests |
 | Build | Webpack + MFSU | Umi managed | Development and production bundling |
 | Package manager | pnpm | 7.x | Reproducible dependency installation |
-| CI | GitHub Actions | — | Type check, lint, and production build |
 
 ## Architecture
 
@@ -223,7 +219,7 @@ admin / admin123456
 
 ## Quality and Reliability
 
-- `pnpm tsc` and `pnpm build` are required CI checks.
+- Run `pnpm tsc`, `pnpm lint:js`, and `pnpm build` before publishing changes.
 - Generated API types are consumed through the service layer.
 - Long backend identifiers are preserved as strings.
 - Malformed ECharts JSON is isolated by a per-card error boundary.
