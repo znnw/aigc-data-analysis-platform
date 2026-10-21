@@ -2,7 +2,6 @@
 
 [English](README.en.md) | 简体中文
 
-[![Java](https://img.shields.io/badge/Java-8-ED8B00)](https://www.java.com/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.2-6DB33F)](https://spring.io/projects/spring-boot)
 [![MyBatis Plus](https://img.shields.io/badge/MyBatis--Plus-3.5.2-1E90FF)](https://baomidou.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-8-4479A1)](https://www.mysql.com/)
