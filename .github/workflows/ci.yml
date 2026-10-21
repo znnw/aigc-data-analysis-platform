@@ -38,7 +38,7 @@ jobs:
         run: mvn -B -DskipTests package
 
       - name: Upload application artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: aigc-data-analysis-backend
           path: target/aigc-data-analysis-backend-*.jar
