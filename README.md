@@ -13,7 +13,9 @@
 
 面向 Excel 数据文件的一站式智能分析后端。系统将表格数据转换为 CSV，调用大模型生成 ECharts 配置和分析结论，并支持同步、线程池异步和 RabbitMQ 异步三种任务执行模式。
 
-> 当前仓库仅包含后端服务。前端应用通过 `/api` 下的 REST API 与其交互。
+> 本仓库同时包含根目录下的后端服务与 `frontend/` 目录下的 React 前端。前端通过 `/api` 下的 REST API 与后端交互。
+
+前端文档：[简体中文](frontend/README.zh-CN.md) | [English](frontend/README.md)
 
 ## 项目定位
 

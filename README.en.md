@@ -13,7 +13,9 @@ English | [简体中文](README.md)
 
 A backend platform for AI-assisted analysis of Excel data. It converts spreadsheet content to CSV, calls a large language model to generate an ECharts configuration and a written analysis, and supports synchronous, thread-pool asynchronous, and RabbitMQ-based asynchronous execution.
 
-> This repository contains the backend service only. A frontend application can integrate through the REST API exposed under `/api`.
+> This repository contains both the backend service at the repository root and the React frontend in `frontend/`. The frontend integrates through the REST API exposed under `/api`.
+
+Frontend documentation: [English](frontend/README.md) | [简体中文](frontend/README.zh-CN.md)
 
 ## Overview
 

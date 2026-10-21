@@ -165,6 +165,17 @@ logs/
 application-*-secret.yml
 application-*.local.yml
 
+# Frontend generated files
+frontend/node_modules/
+frontend/dist/
+frontend/.runtime/
+frontend/src/.umi/
+frontend/src/.umi-test/
+frontend/src/.umi-production/
+frontend/.eslintcache
+frontend/.env.local
+frontend/.env.*.local
+
 # Operating system metadata
 .DS_Store
 Thumbs.db
