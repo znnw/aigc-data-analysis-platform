@@ -399,33 +399,39 @@ public class ChartController {
 
         // todo 建议处理任务队列满了后，抛异常的情况
         CompletableFuture.runAsync(() -> {
-            // 先修改图表任务状态为 “执行中”。等执行成功后，修改为 “已完成”、保存执行结果；执行失败后，状态修改为 “失败”，记录任务失败信息。
-            Chart updateChart = new Chart();
-            updateChart.setId(chart.getId());
-            updateChart.setStatus("running");
-            boolean b = chartService.updateById(updateChart);
-            if (!b) {
-                handleChartUpdateError(chart.getId(), "更新图表执行中状态失败");
-                return;
-            }
-            // 调用 AI
-            String result = aiManager.doChat(biModelId, userInput.toString());
-            String[] splits = result.split("【【【【【");
-            if (splits.length < 3) {
-                handleChartUpdateError(chart.getId(), "AI 生成错误");
-                return;
-            }
-            String genChart = splits[1].trim();
-            String genResult = splits[2].trim();
-            Chart updateChartResult = new Chart();
-            updateChartResult.setId(chart.getId());
-            updateChartResult.setGenChart(genChart);
-            updateChartResult.setGenResult(genResult);
-            // todo 建议定义状态为枚举值
-            updateChartResult.setStatus("succeed");
-            boolean updateResult = chartService.updateById(updateChartResult);
-            if (!updateResult) {
-                handleChartUpdateError(chart.getId(), "更新图表成功状态失败");
+            try {
+                // 先修改图表任务状态为 “执行中”。等执行成功后，修改为 “已完成”、保存执行结果；执行失败后，状态修改为 “失败”，记录任务失败信息。
+                Chart updateChart = new Chart();
+                updateChart.setId(chart.getId());
+                updateChart.setStatus("running");
+                boolean b = chartService.updateById(updateChart);
+                if (!b) {
+                    handleChartUpdateError(chart.getId(), "更新图表执行中状态失败");
+                    return;
+                }
+                // 调用 AI
+                String result = aiManager.doChat(biModelId, userInput.toString());
+                String[] splits = result.split("【【【【【");
+                if (splits.length < 3) {
+                    handleChartUpdateError(chart.getId(), "AI 生成错误");
+                    return;
+                }
+                String genChart = splits[1].trim();
+                String genResult = splits[2].trim();
+                Chart updateChartResult = new Chart();
+                updateChartResult.setId(chart.getId());
+                updateChartResult.setGenChart(genChart);
+                updateChartResult.setGenResult(genResult);
+                // todo 建议定义状态为枚举值
+                updateChartResult.setStatus("succeed");
+                boolean updateResult = chartService.updateById(updateChartResult);
+                if (!updateResult) {
+                    handleChartUpdateError(chart.getId(), "更新图表成功状态失败");
+                }
+            } catch (Exception e) {
+                log.error("异步图表分析失败，chartId={}", chart.getId(), e);
+                handleChartUpdateError(chart.getId(),
+                        StringUtils.defaultIfBlank(e.getMessage(), "异步分析执行失败"));
             }
         }, threadPoolExecutor);
 
@@ -522,7 +528,7 @@ public class ChartController {
         Chart updateChartResult = new Chart();
         updateChartResult.setId(chartId);
         updateChartResult.setStatus("failed");
-        updateChartResult.setExecMessage("execMessage");
+        updateChartResult.setExecMessage(execMessage);
         boolean updateResult = chartService.updateById(updateChartResult);
         if (!updateResult) {
             log.error("更新图表失败状态失败" + chartId + "," + execMessage);
