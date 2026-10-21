@@ -1,0 +1,69 @@
+name: Bug report
+description: Report a reproducible backend problem
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include API keys, passwords, private data, or production logs in this issue.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Start the application with profile ...
+        2. Call endpoint ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Remove secrets and personal data before submitting.
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: java-version
+    attributes:
+      label: Java version
+      placeholder: 1.8.0_202
+    validations:
+      required: true
+
+  - type: input
+    id: profile
+    attributes:
+      label: Active Spring profile
+      placeholder: dev, local, test, or prod
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, MySQL, Redis, RabbitMQ, Elasticsearch, and browser/runtime versions when relevant.
+    validations:
+      required: false
