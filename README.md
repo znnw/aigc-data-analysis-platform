@@ -17,6 +17,11 @@
 
 前端文档：[简体中文](frontend/README.zh-CN.md) | [English](frontend/README.md)
 
+## 前端应用
+
+前端基于 **React、Umi Max、Ant Design、TypeScript 和 Apache ECharts** 构建，提供 AI 分析工作台、异步任务追踪、图表画廊和响应式移动端体验。
+
+[简体中文 README](frontend/README.zh-CN.md) · [English README](frontend/README.md) · [查看前端源码](frontend/)
 ## 项目定位
 
 AIGC 智能数据分析平台后端聚焦以下场景：
